@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", function() {
         if (name && email && message) {
             // Use AJAX to submit the form data to the server
             let xhr = new XMLHttpRequest();
-            xhr.open("POST", "process_form.php", true);
+            xhr.open("POST", "contact.php", true);
             xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
             xhr.onreadystatechange = function() {
                 if (xhr.readyState === 4 && xhr.status === 200) {
