@@ -1,26 +1,14 @@
-document.addEventListener("DOMContentLoaded", function() {
-    document.getElementById("contact-form").addEventListener("submit", function(event) {
-        event.preventDefault();
+]document.getElementById("contactForm").addEventListener("submit", function (event) {
+    event.preventDefault();
 
-        let name = document.getElementById("name").value;
-        let email = document.getElementById("email").value;
-        let message = document.getElementById("message").value;
+    var formData = new FormData(this);
 
-        if (name && email && message) {
-            // Use AJAX to submit the form data to the server
-            let xhr = new XMLHttpRequest();
-            xhr.open("POST", "contact.php", true);
-            xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-            xhr.onreadystatechange = function() {
-                if (xhr.readyState === 4 && xhr.status === 200) {
-                    document.getElementById("response").innerHTML = xhr.responseText;
-                }
-            };
-
-            let formData = new FormData(this);
-            xhr.send(formData);
-        } else {
-            alert("Please fill in all fields.");
-        }
-    });
+    fetch("contact.php", {
+        method: "POST",
+        body: formData
+    })
+    .then(response => response.text())
+    .then(data => {
+        document.getElementById("responseMessage").innerHTML = data;
+    });
 });
