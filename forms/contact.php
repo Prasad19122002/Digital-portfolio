@@ -1,13 +1,34 @@
 <?php
-if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    $name = $_POST["name"];
-    $email = $_POST["email"];
-    $message = $_POST["message"];
 
-    // You can add further processing, validation, and email sending here.
+if(isset($_POST)){
+	$formok = true;
 
-    echo "Thank you for your message, $name. I will get back to you soon.";
-} else {
-    echo "Something went wrong. Please try again later.";
+	//form data
+
+	$name = htmlspecialchars($_POST['name']);
+	$email = htmlspecialchars($_POST['email']);
+	$message = htmlspecialchars($_POST['message']);
+
+	//validation
+	if(empty($name) || empty($email) || empty($message)){
+		$formok = false;
+	}
+
+	if($formok){
+		$headers = "From: info@nandccontractors.com" . "\r\n";
+		$headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
+		$emailbody = "<p>You have recieved a new message from the enquiries form on your website.</p>
+                  <p><strong>Name: </strong> {$name} </p>
+                  <p><strong>Email Address: </strong> {$email} </p>
+                  <p><strong>Message: </strong> {$message} </p> ";
+
+    mail("prasadsmart2002@gmail.com","New Enquiry",$emailbody,$headers);
+
+	}
+
+        //redirect back to form
+        header('location: ' . $_SERVER['HTTP_REFERER']);
+
 }
-?>
+
+ ?>
