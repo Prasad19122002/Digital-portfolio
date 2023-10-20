@@ -1,6 +1,6 @@
 <?php
 
-    $receiving_email_address = 'prasadsmart2002@gmail.com';
+    $receiving_email_address = 'myemailadress';
     
       if( file_exists($php_email_form = '/assets/vendor/php-email-form/php-email-form.php' )) {
         include( $php_email_form );
@@ -15,15 +15,14 @@
       $contact->from_name = $_POST['name'];
       $contact->from_email = $_POST['email'];
       $contact->subject = $_POST['subject'];
-    
-      
+
       $contact->smtp = array(
-        'host' => 'smtp.gmail.com',
-        'username' => 'Prasad C',
+        'host' => 'prasadc1912@gmail.com',
+        'username' => 'prasadc1912@gmail.com',
         'password' => 'empe sefr lpug swga',
         'port' => '587'
       );
-      
+      */
     
       $contact->add_message( $_POST['name'], 'From');
       $contact->add_message( $_POST['email'], 'Email');
