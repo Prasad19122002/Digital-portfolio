@@ -11,17 +11,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $headers .= "MIME-Version: 1.0\r\n";
         $headers .= "Content-Type: text/html; charset=UTF-8\r\n";
 
-        $emailBody = "
-            <html>
-            <body>
-                <p>Name: $name</p>
-                <p>Email: $email</p>
-                <p>Message:</p>
-                <p>$message</p>
-            </body>
-            </html>
-        ";
-
         if (mail($to, $subject, $emailBody, $headers)) {
             echo "Thank you for your message. I will get back to you soon.";
         } else {
