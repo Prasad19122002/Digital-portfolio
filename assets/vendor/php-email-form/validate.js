@@ -1,6 +1,7 @@
-(function phpemailform() {
+(function () {
+  "use strict";
 
-  let forms = document.querySelectorAll('php-email-form');
+  let forms = document.querySelectorAll('.php-email-form');
 
   forms.forEach( function(e) {
     e.addEventListener('submit', function(event) {
@@ -76,4 +77,4 @@
     thisForm.querySelector('.error-message').classList.add('d-block');
   }
 
-}));
+})();
