@@ -15,7 +15,7 @@
       $contact->from_name = $_POST['name'];
       $contact->from_email = $_POST['email'];
       $contact->subject = $_POST['subject'];
-
+/*
       $contact->smtp = array(
         'host' => 'prasadc1912@gmail.com',
         'username' => 'prasadc1912@gmail.com',
